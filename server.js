@@ -1,11 +1,18 @@
 const express = require("express");
 const path = require("path");
-const app = express();
+const bodyParser = require("body-parser");
 
-app.set("view engine", "ejs");
+const router = require("./routes/router");
+
+const app = express();
 const port = 3000;
 
+app.set("view engine", "ejs");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static(path.join(__dirname, "public")));
+app.use(router);
 
 app.get("/", function(req, res) {
   res.render("pages/index.ejs");
