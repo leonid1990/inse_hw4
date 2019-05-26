@@ -6,6 +6,7 @@
 
 <!-- Trigger the modal with a button -->
 <button
+  id="btn"
   type="button"
   class="btn btn-info btn-lg"
   data-toggle="modal"
@@ -48,6 +49,9 @@
   </div>
 </div>
 <script>
+  function updateView() {
+    $("#btn").text("Logout");
+  }
   function postData() {
     var data = {
       userName: document.getElementById("user-name").value,
@@ -60,7 +64,15 @@
       },
       body: JSON.stringify(data)
     })
-      .then(response => console.log(response))
-      .catch(err => alert(err));
+      .then(function(response) {
+        if (!response.ok) {
+          alert("Error!");
+          throw new Error("Wrong credentials");
+        } else {
+          $("#login").modal("hide");
+          updateView();
+        }
+      })
+      .catch(err => console.log(err));
   }
 </script>
