@@ -1,11 +1,11 @@
-exports.User = function(id, typeOfUser, userName, password) {
+function User(id, typeOfUser, userName, password) {
   this.id = id;
   this.typeOfUser = typeOfUser;
   this.userName = userName;
   this.password = password;
-};
+}
 
-var allUsersData = require("../data").users;
+var allUsersData = require("../../data").users;
 
 function serializeUser(singleUserObj) {
   return JSON.stringify(singleUserObj);
@@ -28,7 +28,7 @@ exports.getUserByName = function(userName) {
   return deSerializeUser(allUsersData.find(user => user.userName === userName));
 };
 exports.getAllUsers = function() {
-  return allUsersData.map(deSerializeUser(singleUserData));
+  return allUsersData.map(singleUserData => deSerializeUser(singleUserData));
 };
 exports.createUser = function(user) {
   if (getUserById(user.id)) {

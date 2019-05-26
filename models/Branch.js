@@ -1,8 +1,8 @@
-exports.Branch = function(id, address, isActive) {
+function Branch(id, address, isActive) {
   this.id = id;
   this.address = address;
   this.isActive = isActive;
-};
+}
 
 var allBranchesData = require("../data").branches;
 
@@ -25,7 +25,9 @@ exports.getBranchById = function(id) {
 };
 
 exports.getAllBranches = function() {
-  return allBranchesData.map(deSerializeBranch(singleBranchData));
+  return allBranchesData.map(singleBranchData =>
+    deSerializeBranch(singleBranchData)
+  );
 };
 exports.createBranch = function(branch) {
   if (getBranchById(branch.id)) {
