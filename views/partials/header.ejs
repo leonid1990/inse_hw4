@@ -49,8 +49,12 @@
   </div>
 </div>
 <script>
-  function updateView() {
+  function updateView(data) {
     $("#btn").text("Logout");
+    document.getElementById("btn").removeAttribute("data-target");
+    $("#btn").bind("click", function() {
+      window.location.assign("/");
+    });
   }
   function postData() {
     var data = {
@@ -70,7 +74,12 @@
           throw new Error("Wrong credentials");
         } else {
           $("#login").modal("hide");
-          updateView();
+          updateView(data);
+          window.history.replaceState(
+            null,
+            null,
+            "/?userName=" + data.userName
+          );
         }
       })
       .catch(err => console.log(err));
