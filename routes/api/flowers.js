@@ -1,29 +1,29 @@
 const express = require("express");
 const router = express.Router();
 
-var controller = require("../../controllers/users.js");
+var controller = require("../../controllers/flowers.js");
 
-// @route   GET api/users/test
-// @desc    Tests users route
+// @route   GET api/flowers/test
+// @desc    Tests flowers route
 // @access  Public
-router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
+router.get("/test", (req, res) => res.json({ msg: "flowers Works" }));
 
-// @route   GET api/users
-// @desc    Returns all users
+// @route   GET api/flowers
+// @desc    Returns all flowers
 // @access  Public
-router.get("/", (req, res) => res.json(controller.getAllUsers()));
+router.get("/", (req, res) => res.json(controller.getAllflowers()));
 
-// @route   GET api/users/:userId
-// @desc    Returns a user by id
+// @route   GET api/flowers/:flowerId
+// @desc    Returns a flower by id
 // @access  Public
-router.get("/:userId", (req, res) => {
-  var id = req.params.usersId;
-  res.send(controller.getUserById(id));
+router.get("/:flowerId", (req, res) => {
+  var id = req.params.flowersId;
+  res.send(controller.getflowerById(id));
 });
 
 // TODO
-// @route   GET api/users/create/:userId
-// @desc    Creates a user
+// @route   GET api/flowers/create/:flowerId
+// @desc    Creates a flower
 // @access  Public
 
 module.exports = router;
