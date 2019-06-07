@@ -22,13 +22,11 @@ function createFlowersEntry() {
   var aboutTab = document.getElementById("aboutTab");
   tabs.insertBefore(tabFlowers, aboutTab);
   /* add flowers div */
-
   var divFlowers = document.createElement("div");
   divFlowers.setAttribute("id", "flowers");
   divFlowers.setAttribute("class", "tab-pane fade");
   var divFlowers_content = document.createTextNode("Flowers Content");
   divFlowers.appendChild(divFlowers_content);
-
   var tabContent = document.getElementsByClassName("tab-content")[0];
   var about = document.getElementById("about");
   tabContent.insertBefore(divFlowers, about);

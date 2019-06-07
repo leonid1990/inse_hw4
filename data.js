@@ -3,7 +3,22 @@ exports.branches = [
   { id: 2, address: "Gilo", isActive: false }
 ];
 
-exports.flowers = [];
+exports.flowers = [
+  {
+    id: 1,
+    name: "rose",
+    color: "red",
+    image: "/images/flowers/rose.jpg",
+    cost: "7"
+  },
+  {
+    id: 1,
+    name: "iris",
+    color: "purple",
+    image: "/images/flowers/iris.jpg",
+    cost: "10"
+  }
+];
 
 exports.users = [
   {
