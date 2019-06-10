@@ -21,22 +21,30 @@ router.post("/login", function(req, res) {
   }
 });
 
-router.use("/api/", function(req, res, next) {
-  var isValid = false;
-  try {
-    isValid = usersController.validateUser(
-      req.body.userName,
-      req.body.password
-    );
-  } catch (error) {
-    console.log(error);
+router.use(
+  "/api/",
+  function(req, res, next) {
+    var isValid = false;
+    try {
+      isValid = usersController.validateUser(
+        req.body.userName,
+        req.body.password
+      );
+    } catch (error) {
+      console.log(error);
+    }
+    if (isValid) {
+      next();
+    } else {
+      res.sendStatus(401);
+    }
+  },
+  function(req, res, next) {
+    setTimeout(function() {
+      next();
+    }, 1000);
   }
-  if (isValid) {
-    next();
-  } else {
-    res.sendStatus(401);
-  }
-});
+);
 
 router.use("/api/flowers", flowersRouter);
 
