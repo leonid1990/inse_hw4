@@ -1,29 +1,29 @@
 const express = require("express");
 const router = express.Router();
 
-var controller = require("../../controllers/flowers.js");
+var controller = require("../../controllers/flowers");
 
-// @route   GET api/flowers/test
+// @route   POST api/flowers/test
 // @desc    Tests flowers route
-// @access  Public
-router.get("/test", (req, res) => res.json({ msg: "flowers Works" }));
+// @access  Private
+router.post("/test", (req, res) => res.json({ msg: "Flowers Works" }));
 
-// @route   GET api/flowers
+// @route   POST api/flowers
 // @desc    Returns all flowers
-// @access  Public
-router.get("/", (req, res) => res.json(controller.getAllflowers()));
+// @access  Private
+router.post("/", (req, res) => res.json(controller.getAllFlowers()));
 
-// @route   GET api/flowers/:flowerId
+// @route   POST api/flowers/:flowerId
 // @desc    Returns a flower by id
-// @access  Public
-router.get("/:flowerId", (req, res) => {
-  var id = req.params.flowersId;
-  res.send(controller.getflowerById(id));
+// @access  Private
+router.post("/:flowerId", (req, res) => {
+  var id = Number(req.params.flowerId);
+  res.send(controller.getFlowerById(id));
 });
 
 // TODO
-// @route   GET api/flowers/create/:flowerId
+// @route   POST api/flowers/create/:flowerId
 // @desc    Creates a flower
-// @access  Public
+// @access  Private
 
 module.exports = router;

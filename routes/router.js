@@ -1,8 +1,8 @@
 const express = require("express");
+const flowersRouter = require("../routes/api/flowers");
+const usersController = require("../controllers/users");
 
 const router = express.Router();
-
-const usersController = require("../controllers/users");
 
 router.post("/login", function(req, res) {
   var isValid = false;
@@ -20,5 +20,24 @@ router.post("/login", function(req, res) {
     res.sendStatus(401);
   }
 });
+
+router.use("/api/", function(req, res, next) {
+  var isValid = false;
+  try {
+    isValid = usersController.validateUser(
+      req.body.userName,
+      req.body.password
+    );
+  } catch (error) {
+    console.log(error);
+  }
+  if (isValid) {
+    next();
+  } else {
+    res.sendStatus(401);
+  }
+});
+
+router.use("/api/flowers", flowersRouter);
 
 module.exports = router;

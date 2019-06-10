@@ -5,7 +5,7 @@ function Flower(id, name, color, image, cost) {
   this.image = image;
   this.cost = cost;
 }
-var allFlowersData = require("../../data").flowers;
+var allFlowersData = require("../data").flowers;
 
 function serializeFlower(singleFlowerObj) {
   return JSON.stringify(singleFlowerObj);

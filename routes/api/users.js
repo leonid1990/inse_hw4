@@ -3,27 +3,27 @@ const router = express.Router();
 
 var controller = require("../../controllers/users.js");
 
-// @route   GET api/users/test
+// @route   POST api/users/test
 // @desc    Tests users route
-// @access  Public
+// @access  Private
 router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
-// @route   GET api/users
+// @route   POST api/users
 // @desc    Returns all users
-// @access  Public
+// @access  Private
 router.get("/", (req, res) => res.json(controller.getAllUsers()));
 
-// @route   GET api/users/:userId
+// @route   POST api/users/:userId
 // @desc    Returns a user by id
-// @access  Public
+// @access  Private
 router.get("/:userId", (req, res) => {
-  var id = req.params.usersId;
+  var id = Number(req.params.usersId);
   res.send(controller.getUserById(id));
 });
 
 // TODO
-// @route   GET api/users/create/:userId
+// @route   POST api/users/create/:userId
 // @desc    Creates a user
-// @access  Public
+// @access  Private
 
 module.exports = router;
