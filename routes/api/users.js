@@ -11,15 +11,12 @@ router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 // @route   POST api/users
 // @desc    Returns all users
 // @access  Private
-router.get("/", (req, res) => res.json(controller.getAllUsers()));
+router.get("/", controller.getAllUsers);
 
 // @route   POST api/users/:userId
 // @desc    Returns a user by id
 // @access  Private
-router.get("/:userId", (req, res) => {
-  var id = Number(req.params.usersId);
-  res.send(controller.getUserById(id));
-});
+router.get("/:userId", controller.getUserById);
 
 // TODO
 // @route   POST api/users/create/:userId

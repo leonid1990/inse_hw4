@@ -13,15 +13,14 @@ exports.validateUser = function(userName, password) {
   }
 };
 
-exports.getUserById = function(id) {
-  return UserModel.getUserById(id);
+exports.getUserById = (req, res) => {
+  var id = Number(req.params.usersId);
+  res.send(UserModel.getUserById(id));
 };
 exports.getUserByName = function(userName) {
   return UserModel.getUserByName(userName);
 };
-exports.getAllUsers = function() {
-  return UserModel.getAllUsers();
-};
+exports.getAllUsers = (req, res) => res.json(UserModel.getAllUsers());
 exports.createUser = function(user) {
   UserModel.createUser(user);
 };

@@ -3,23 +3,20 @@ const router = express.Router();
 
 var controller = require("../../controllers/branches.js");
 
-// @route   POST api/branches/test
+// @route   GET api/branches/test
 // @desc    Tests branches route
 // @access  Private
 router.get("/test", (req, res) => res.json({ msg: "Branches Works" }));
 
-// @route   POST api/branches
+// @route   GET api/branches
 // @desc    Returns all branches
 // @access  Private
-router.get("/", (req, res) => res.json(controller.getAllBranches()));
+router.get("/", controller.getAllBranches);
 
-// @route   POST api/branches/:branchId
+// @route   GET api/branches/:branchId
 // @desc    Returns a branch by id
 // @access  Private
-router.get("/:branchId", (req, res) => {
-  var id = Number(req.params.branchId);
-  res.send(controller.getBranchById(id));
-});
+router.get("/:branchId", controller.getBranchById);
 
 // @route   POST api/branches/create/:branchId
 // @desc    Creates a branch
